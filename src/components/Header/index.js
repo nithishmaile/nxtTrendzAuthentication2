@@ -1,11 +1,11 @@
-import {withRouter} from 'react-router-dom'
-import {Cookies} from 'js-cookie'
+import {withRouter, Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import './index.css'
 
 const Header = props => {
+  const {history} = props
   const onClickLogout = () => {
-    const {history} = props
-    Cookies.remove('jwt-token')
+    Cookies.remove('jwt_token')
 
     history.replace('/login')
   }
@@ -36,11 +36,17 @@ const Header = props => {
             alt="website logo"
           />
           <ul className="nav-menu">
-            <li className="nav-menu-item">Home</li>
+            <Link to="/">
+              <li className="nav-menu-item">Home</li>
+            </Link>
 
-            <li className="nav-menu-item">Products</li>
+            <Link to="/products">
+              <li className="nav-menu-item">Products</li>
+            </Link>
 
-            <li className="nav-menu-item">Cart</li>
+            <Link to="/cart">
+              <li className="nav-menu-item">Cart</li>
+            </Link>
           </ul>
           <button
             type="button"
